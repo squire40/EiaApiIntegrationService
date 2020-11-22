@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using EiaApiIntegrationService;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RestSharp;
 
 public class Startup
 {
@@ -16,6 +18,14 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IConfigurationRoot>(Configuration);
-        //services.AddSingleton<IMyService, MyService>();
+        services.AddTransient<IApiIntegration, ApiIntegration>();
+    }
+
+    public void ConfigureApiIntegration(IServiceCollection services)
+    {
+        var client = new RestClient(Configuration.GetSection("AppSettings:ApiBaseUrl").Value);
+        var request = new RestRequest($"series/api_key={Configuration.GetSection("AppSettings:ApiKey").Value}" +
+            $"&series_id={Configuration.GetSection("AppSettings:SeriesId").Value}");
+        services.AddTransient<IApiIntegration>(c => new ApiIntegration(client, request));
     }
 }

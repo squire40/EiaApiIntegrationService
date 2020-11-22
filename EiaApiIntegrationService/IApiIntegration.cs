@@ -1,0 +1,6 @@
+﻿namespace EiaApiIntegrationService
+{
+    interface IApiIntegration
+    {
+    }
+}
