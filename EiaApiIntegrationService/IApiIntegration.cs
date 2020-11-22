@@ -1,6 +1,7 @@
 ﻿namespace EiaApiIntegrationService
 {
-    interface IApiIntegration
+    public interface IApiIntegration
     {
+        string GetSeriesData();
     }
 }

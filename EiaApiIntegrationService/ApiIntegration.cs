@@ -12,5 +12,12 @@ namespace EiaApiIntegrationService
             _client = client;
             _request = request;
         }
+
+        public string GetSeriesData()
+        {
+            var response = _client.Execute(_request);
+
+            return response.Content;
+        }
     }
 }
