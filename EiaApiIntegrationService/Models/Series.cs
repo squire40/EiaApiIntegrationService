@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 
@@ -330,6 +331,7 @@ namespace EiaApiIntegrationService.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [DebuggerDisplay("Date: {ParsedDate}, Value: {value}")]
     public partial class eia_apiSeriesRowRow
     {
 
