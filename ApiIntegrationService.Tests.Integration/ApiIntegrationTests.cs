@@ -15,7 +15,7 @@ namespace ApiIntegrationService.Tests.Integration
         {
             _client = new RestClient("http://api.eia.gov/");
             _request = new RestRequest($"series/?api_key=ec92aacd6947350dcb894062a4ad2d08" +
-            $"&series_id=PET.EMD_EPD2D_PTE_NUS_DPG.W");
+            $"&series_id=PET.EMD_EPD2D_PTE_NUS_DPG.W&out=xml");
             _api = new ApiIntegration(_client, _request);
         }
 

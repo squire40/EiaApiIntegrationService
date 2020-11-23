@@ -1,7 +1,10 @@
-﻿namespace EiaApiIntegrationService
+﻿using EiaApiIntegrationService.Models;
+using System.Collections.Generic;
+
+namespace EiaApiIntegrationService
 {
     public interface IApiIntegration
     {
-        string GetSeriesData();
+        eia_apiSeriesRowRow[] GetSeriesData();
     }
 }
