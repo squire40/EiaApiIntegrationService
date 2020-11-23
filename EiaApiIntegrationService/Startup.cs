@@ -24,8 +24,9 @@ public class Startup
     public void ConfigureApiIntegration(IServiceCollection services)
     {
         var client = new RestClient(Configuration.GetSection("AppSettings:ApiBaseUrl").Value);
+        var daysToRetainData = int.Parse(Configuration.GetSection("AppSettings:DaysToRetainData").Value);
         var request = new RestRequest($"series/api_key={Configuration.GetSection("AppSettings:ApiKey").Value}" +
             $"&series_id={Configuration.GetSection("AppSettings:SeriesId").Value}");
-        services.AddTransient<IApiIntegration>(c => new ApiIntegration(client, request));
+        services.AddTransient<IApiIntegration>(c => new ApiIntegration(client, request, daysToRetainData));
     }
 }

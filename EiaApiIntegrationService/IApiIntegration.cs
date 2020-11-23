@@ -5,6 +5,6 @@ namespace EiaApiIntegrationService
 {
     public interface IApiIntegration
     {
-        eia_apiSeriesRowRow[] GetSeriesData();
+        List<eia_apiSeriesRowRow> GetSeriesData();
     }
 }

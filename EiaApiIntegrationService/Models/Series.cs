@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace EiaApiIntegrationService.Models
@@ -332,12 +333,12 @@ namespace EiaApiIntegrationService.Models
     public partial class eia_apiSeriesRowRow
     {
 
-        private DateTime dateField;
+        private string dateField;
 
         private decimal valueField;
 
         /// <remarks/>
-        public DateTime date
+        public string date
         {
             get
             {
@@ -348,6 +349,9 @@ namespace EiaApiIntegrationService.Models
                 this.dateField = value;
             }
         }
+
+        public DateTime ParsedDate => DateTime.ParseExact(date, "yyyyMMdd",
+                CultureInfo.InvariantCulture);
 
         /// <remarks/>
         public decimal value
