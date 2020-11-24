@@ -1,4 +1,5 @@
 ﻿using EiaApiIntegrationService;
+using EiaApiIntegrationService.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
@@ -18,7 +19,14 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IConfigurationRoot>(Configuration);
-        services.AddTransient<IApiIntegration, ApiIntegration>();
+
+        ConfigureApiIntegration(services);
+        ConfigureRepositories(services);
+    }
+
+    private void ConfigureRepositories(IServiceCollection services)
+    {
+        services.AddTransient<ISeriesRepository, SeriesRepository>(c => new SeriesRepository(Configuration.GetConnectionString("EIA")));
     }
 
     public void ConfigureApiIntegration(IServiceCollection services)
