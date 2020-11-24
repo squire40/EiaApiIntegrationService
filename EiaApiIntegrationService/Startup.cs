@@ -37,8 +37,8 @@ public class Startup
     {
         var client = new RestClient(Configuration.GetSection("AppSettings:ApiBaseUrl").Value);
         var daysCount = int.Parse(Configuration.GetSection("AppSettings:DaysCount").Value);
-        var request = new RestRequest($"series/api_key={Configuration.GetSection("AppSettings:ApiKey").Value}" +
-            $"&series_id={Configuration.GetSection("AppSettings:SeriesId").Value}");
+        var request = new RestRequest($"series/?api_key={Configuration.GetSection("AppSettings:ApiKey").Value}" +
+            $"&series_id={Configuration.GetSection("AppSettings:SeriesId").Value}&out=xml");
         services.AddTransient<IApiIntegration>(c => new ApiIntegration(client, request, daysCount));
     }
 }
