@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Series]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [CreatedDate] DATETIME NOT NULL, 
+    [Value] DECIMAL NOT NULL
+)
