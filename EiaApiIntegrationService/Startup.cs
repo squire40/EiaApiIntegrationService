@@ -22,6 +22,10 @@ public class Startup
 
         ConfigureApiIntegration(services);
         ConfigureRepositories(services);
+        var serviceProvider = services.BuildServiceProvider();
+        services.AddTransient<IEiaDataHandler>(s => new EiaDataHandler(serviceProvider.GetService<IApiIntegration>()
+            , serviceProvider.GetService<ISeriesRepository>()
+            , serviceProvider.GetService<IConfigurationRoot>()));
     }
 
     private void ConfigureRepositories(IServiceCollection services)

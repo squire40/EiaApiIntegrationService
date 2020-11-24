@@ -12,7 +12,9 @@ namespace EiaApiIntegrationService
             startup.ConfigureServices(services);
             IServiceProvider serviceProvider = services.BuildServiceProvider();
 
+            var eiaDataHandler = serviceProvider.GetService<IEiaDataHandler>();
 
+            eiaDataHandler.StoreWeeklyData();
         }
     }
 }
