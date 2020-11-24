@@ -1,7 +1,6 @@
-using RestSharp;
-using System;
-using Xunit;
 using EiaApiIntegrationService;
+using RestSharp;
+using Xunit;
 
 namespace ApiIntegrationService.Tests.Integration
 {
@@ -20,7 +19,7 @@ namespace ApiIntegrationService.Tests.Integration
         }
 
         [Fact]
-        public void Test1()
+        public void GetSeriesData_Happy_Path()
         {
             //Arrange
 

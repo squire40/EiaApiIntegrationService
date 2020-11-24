@@ -37,7 +37,7 @@ namespace EiaApiIntegrationService.Repositories
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                db.Query<SeriesData>(RepositoryConstants.Series_GetList,
+                db.Query<SeriesData>(RepositoryConstants.Series_Save,
                     new
                     {
                         CreatedDate = createdDate,
